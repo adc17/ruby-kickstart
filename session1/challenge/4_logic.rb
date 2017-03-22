@@ -10,4 +10,14 @@
 # grade(15, true)   # => "B"
 
 def grade(num_books, reads_books)
+  ary = ["D", "C", "B", "A"]
+  case 
+  when num_books < 10
+    grade_estimation = 0
+  when num_books >= 10 && num_books <= 20
+    grade_estimation = 1
+  when num_books > 20
+    grade_estimation = 2
+  end
+  reads_books == true ? ary[grade_estimation + 1] : ary[grade_estimation]
 end
