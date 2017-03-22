@@ -7,6 +7,6 @@
 
 class String
   def every_other_char
-    self.chars.select.with_index { |x, y| y % 2 ==0 }.join
+    self.chars.select.with_index { |x, y| y % 2 == 0 }.join
   end
 end
