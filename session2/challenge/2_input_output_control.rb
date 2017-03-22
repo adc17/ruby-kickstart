@@ -20,6 +20,13 @@
 
 def hi_hi_goodbye
   # your code here
+  loop do
+    puts "Enter a number"
+    n = gets.chomp
+    break if n == "bye"
+    print "#{"hi "*n.to_i}\n"
+  end
+  puts "goodbye"
 end
 
 
