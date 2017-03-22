@@ -9,4 +9,6 @@
 
 def sum_difference_product
   # your code goes here
+  ints = gets.chomp.split.map(&:to_i)
+  print "#{ints[0] + ints[1]}\n#{ints[0] - ints[1]}\n#{ints[0] * ints[1]}\n"
 end
