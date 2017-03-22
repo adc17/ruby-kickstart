@@ -14,3 +14,11 @@
 # prime_chars? ['ab', 'cd']       # => false
 # prime_chars? ['a', 'bcd']       # => false
 # prime_chars? ['a', 'b', 'cd']   # => false
+
+def prime_chars?(array)
+  sum = array.join.length
+  return false if sum == 0 || sum == 1
+  return true if sum == 2
+  (2..sum-1).each { |n| return false if sum % n == 0 }
+  return true
+end
