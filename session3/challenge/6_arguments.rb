@@ -17,3 +17,12 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def match_maker(toggle, *values)
+  return_array = []
+  if toggle
+    values.each_slice(2){ |a,b| !(a && b) && !(!a && !b) ? return_array.push(true) : return_array.push(false) }
+  else
+    values.each_slice(2){ |a,b| (a && b) || (!a && !b) ? return_array.push(true) : return_array.push(false) }
+  end
+  return return_array
+end
