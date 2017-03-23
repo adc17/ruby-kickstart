@@ -63,4 +63,51 @@
 
 # date docs are at: http://ruby-doc.org/core/classes/Date.html
 # don't spend too much time worrying about them :)
+
+# My best attempt
 require 'date'
+
+class User
+
+  attr_accessor :username
+
+  def initialize(username)
+    @username = username
+  end
+
+  def add_blog(date, text)
+    user = self.username
+    Blog.new(date, user, text)
+  end
+
+  def blogs
+    user = self.username
+    return @@blogs_array.select { |x| x.user == user}.sort { |x,y| x.date <=> y.date }
+  end
+  
+end
+
+class Blog
+
+  attr_accessor :date, :user, :text
+  @@blog_count = 0
+  @@blogs_array = []
+
+  def initialize(date, user, text)
+    @@blog_count += 1
+    @date = date; @user = user; @text = text
+    @@blogs_array.push(self)
+  end
+
+  def summary
+    @text.split.select.with_index { |x,y| y < 10 }.join(" ")
+  end
+
+  def entry
+    return "#{@user} #{@date}\n#{text}"
+  end
+
+  def ==(other)
+    return self.date == other.date && self.user == other.user && self.text == other.text
+  end
+end
