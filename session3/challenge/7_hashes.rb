@@ -24,11 +24,18 @@
 #                      <li style='color:#0000FF;font-family:"Courier New", "Lucida Console"'>football</li>
 #                      </ol>
 
+#3:7 best attempt
 class HTMLTag
   FONTS = {
     :serif      => '"Times New Roman", "Georgia"',
     :sans_serif => '"Arial", "Verdana"',
     :monospace  => '"Courier New", "Lucida Console"'
+  }
+
+  COLORS = {
+    :red 	=> '#FF0000',
+    :green 	=> '#00FF00',
+    :blue	=> '#0000FF'
   }
 
   attr_accessor :name, :innerHTML, :options
@@ -43,9 +50,21 @@ class HTMLTag
     FONTS[font]
   end
 
+  def color
+    color = options[:color]
+    COLORS[color]
+  end
+
   def style
-    return nil unless options[:font]
-    "style='font-family:#{font}'"
+    if options[:font] && options[:color]
+      "style='color:{color};font-family:#{font}'"
+    elsif options[:font]
+      "style='font-family:#{font}'"
+    elsif options[:color]
+      "style='color:#{color}'"
+    else
+      return nil
+    end
   end
 
   def to_s
