@@ -1,15 +1,15 @@
-# Lets represent a file sy$stem with hashes
+# Lets represent a file system with hashes
 # You will be passed a hash table, whose keys represent folders.
-# Their values will either be $arrays of filenames in that directory
+# Their values will either be arrays of filenames in that directory
 # or they will be hashes with the same rules (a treelike structure)
 #
-# Your job is to take the hashes, and return an $array containing
+# Your job is to take the hashes, and return an array containing
 # all of the complete file paths where each directory is separated by a '/'
 #
 # HINT:
-#   [1,2,3].is_a? $Array # => true
+#   [1,2,3].is_a? Array # => true
 #   [1,2,3].is_a? Hash  # => false
-#   {1=>1}.is_a?  $Array # => false
+#   {1=>1}.is_a?  Array # => false
 #   {1=>1}.is_a?  Hash  # => true
 #
 # HINT2:
@@ -29,46 +29,32 @@
 # create it from scratch :)
 
 
-# 3:10 Best attempt 
-
-
 def pathify(hash)
-  return [] if hash == {}
-  $array = []
-  $stem = ""
-  $stem_number = 0
-  $level = 0
-  def recurse(current_hash)
-    if $level != 0
-      reg = "((\/.*?(?=\/|$)){l})".gsub(/l/, $level.to_s)
-      to_parent = Regexp.new(reg)
-      $stem = $stem.scan(to_parent).shift.shift
-    else
-      $stem = ""
-    end
-    current_hash.each do |k,v|
-        if $array[$stem_number]
-          $array[$stem_number] << ("/#{k}")
-        else
-          $array[$stem_number] = ($stem + "/#{k}")
-        end
-      $stem = $array[$stem_number]
-      if v.is_a?(Hash)
-        $level += 1
-        recurse(v)
-      else
-        v.each do |x|
-          if $array[$stem_number]
-            $array[$stem_number] << ("/#{x}")
-          else
-            $array[$stem_number] = ($stem + "/#{x}")
+  array = []
+  iteration = 0
+#  def iterate
+    iteration += 1
+#    stem_number = 0
+    hash.each do |k,v|
+      if iteration == 1
+        array.push("/#{k}")
+        if hash[v].is_a?(Hash)
+          hash[v].each do |k,v|
+            iteration += 1
+            array[0] << "/#{v}"
           end
-          $stem_number += 1
+        else
+          hash[v].each do |x|
+            array[0] << "/#{x}"
         end
-      end
+        iterate(hash[v])
+      else
+        
+
+        
+      iteration > 1 ? : array.push("/#{k}")
+      v.is_a?(Hash) ? pathify(hash[v]) 
+      
     end
-    $level -= 1
-  end 
-  recurse(hash) 
-  return $array 
+  end
 end
