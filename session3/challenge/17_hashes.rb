@@ -15,5 +15,6 @@ def print_list_in_reverse(hash)
     return true
   else
     print "#{hash[:data]}\n" if print_list_in_reverse(hash[:next])
+    return true
   end
 end
