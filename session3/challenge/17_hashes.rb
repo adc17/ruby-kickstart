@@ -7,3 +7,13 @@
 #
 # print_list_in_reverse head   # >> "1\n2\n"
 
+# 3:17 Best Attempt
+
+def print_list_in_reverse(hash)
+  if hash[:next].nil?
+    print "#{hash[:data]}\n"
+    return true
+  else
+    print "#{hash[:data]}\n" if print_list_in_reverse(hash[:next])
+  end
+end
