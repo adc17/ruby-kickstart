@@ -52,5 +52,15 @@
 #   end
 # end       # => ["a", "m", "r", 1, 3, 4, 9, 2.5, 9.0, 25.8]
 
-def your_sort
+def your_sort(array, &block)
+  array.each_index do |x|
+    y = x + 1
+    while y <= array.length-1
+      block.nil? ? switch = array[x] <=> array[y] : switch = block.call(array[x],array[y]) 
+      if switch == 1
+         array[x], array[y] = array[y], array[x]
+      end
+      y += 1
+    end
+  end
 end
