@@ -23,21 +23,55 @@
 
 # 3:14 Best Attempt
 
-def problem_14(n, *problem)
-  if problem[-1].is_a?(Hash)
-    problem.pop[:problem] == :same_ends ? same_ends(n, problem) : count_clumps(n, problem)
+# def problem_14(n=[], *problem)
+#   if problem[-1].is_a?(Hash)
+#     problem.pop[:problem] == :same_ends ? same_ends(n, problem) : count_clumps(n, problem)
+#   else
+#     count_clumps(n, problem)
+#   end
+# end
+# 
+# def same_ends(n, *array)
+#   array.flatten!
+#   return true if n == 0
+#   array[0..n-1] == array[-n..-1] ? true : false
+# end
+# 
+# def count_clumps(n=[], *array)
+#   array.unshift(n)
+#   array.flatten!
+#   count = 0
+#   clump = false
+#   array.each_index do |x|
+#     if array[x] == array[x+1]
+#       clump = true
+#     else
+#       count += 1 if clump
+#       clump = false
+#     end
+#   end
+#   return count
+# end
+ 
+ 
+#Tidier Version
+
+def problem_14(*parameters)
+
+  if parameters[-1].is_a?(Hash)
+    parameters.pop[:problem] == :same_ends ? same_ends(*parameters) : count_clumps(*parameters)
   else
-    count_clumps(n, problem)
+    count_clumps(*parameters)
   end
+
 end
 
 def same_ends(n, *array)
   return true if n == 0
-  array[0..n-1] == array[-n..-1] ? true : false
+  array[0..n-1] == array[-n..-1]
 end
 
-def count_clumps(n=[], *array)
-  array.unshift(n)
+def count_clumps(*array)
   count = 0
   clump = false
   array.each_index do |x|
@@ -50,3 +84,5 @@ def count_clumps(n=[], *array)
   end
   return count
 end
+
+
