@@ -38,3 +38,11 @@
 # middle head                        # => 3
 # head = {:data => 6, :next => head}
 # middle head                        # => 3
+
+def middle(hash)
+  count = hash[:data] / 2
+  count.times do
+    hash = hash[:next]
+  end
+  return hash[:data]
+end
