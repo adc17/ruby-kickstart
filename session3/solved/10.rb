@@ -13,3 +13,7 @@ def pathify(paths=Hash.new)
   end
   to_return
 end
+
+
+
+# pathify 'usr' => {'bin' => ['ruby']}, 'opt' => {'local' => {'bin' => ['sqlite3', 'rsync']} } # => ['/usr/bin/ruby', 'opt/local/bin/sqlite3', 'opt/local/bin/rsync']

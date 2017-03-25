@@ -30,5 +30,6 @@
 # end
 
 
-def array_init
+def array_init(integer=5, &block)
+  array = Array.new(integer) { |i| block ? yield(i) : (i * 100).to_s }
 end
