@@ -20,7 +20,7 @@ rvm use ruby --install --default
 For Windows, download and run Ruby Installer, available [here](https://rubyinstaller.org).
 More detailed, OS-specific instructions are available on ruby-lang's [installation page](https://www.ruby-lang.org/en/documentation/installation/).
 
-Once you have Ruby installed, you'll need bundler installed (`gem install bundler`). You'll also need to install the RSpec and Rake—to do this, navigate to the project root and run `bundle install`.
+Once you have Ruby, you'll need to get bundler installed (`gem install bundler`). You'll also need to install the RSpec and Rake gems—to do this, navigate to the project root and run `bundle install`.
 
 ## Usage
 
