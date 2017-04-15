@@ -24,7 +24,11 @@ Once you have Ruby, you'll need to get bundler installed (`gem install bundler`)
 
 ## Usage
 
-Aside from exploring my Ruby files, the only thing for you to run is the tests. You do this using `rake session_no:challenge_no`. e.g. To run the rspec for challenge 4 of section 3, use `rake 3:4`.
+Aside from exploring my Ruby files, the only thing for you to run is the tests. You do this using the following:
+```
+rake session_no:challenge_no
+```
+e.g. To run the rspec for challenge 4 of section 3, use `rake 3:4`.
 
 ## Further Notes
 
