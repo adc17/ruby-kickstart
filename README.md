@@ -24,7 +24,7 @@ Once you have Ruby, you'll need to get bundler installed (`gem install bundler`)
 
 ## Usage
 
-Aside from exploring my Ruby files, the only thing for you to do is run the tests. You can do this using the following:
+Aside from exploring my Ruby files, the only thing for you to do is run the tests. You can run them using the following:
 ```
 rake session_no:challenge_no
 ```
